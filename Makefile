@@ -240,6 +240,15 @@ vivado-fpga-nobuild:
 vivado-fpga-pgm:
 	$(MAKE) -C build/openhwgroup.org_systems_core-v-mini-mcu_0/$(FPGA_BOARD)-vivado pgm
 
+## Builds (synthesis and implementation) the bitstream for the FPGA version using Yosis
+## @param FPGA_BOARD=colorlite-i9
+## @param FUSESOC_FLAGS=--flag=<flagname>
+
+yosis-fpga:
+	git checkout hw/vendor/pulp_platform_common_cells/*
+	sed -i 's/(\*[^\n]*\*)//g' hw/vendor/pulp_platform_common_cells/src/*.sv
+	$(FUSESOC) --cores-root . run --no-export --target=$(FPGA_BOARD) $(FUSESOC_FLAGS) --build openhwgroup.org:systems:core-v-mini-mcu ${FUSESOC_PARAM} 2>&1 | tee buildyosys.log
+
 ## @section ASIC
 ## Note that for this step you need to provide technology-dependent files (e.g., libs, constraints)
 asic:

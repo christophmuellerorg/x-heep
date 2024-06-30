@@ -467,7 +467,25 @@ targets:
         board_part: xilinx.com:zcu104:part0:1.0
         board_repo_paths: [../../../hw/fpga/board_files/vendor/esl_epfl_zcu104_board_files]
     toplevel: [xilinx_core_v_mini_mcu_wrapper]
-    
+
+  colorlight-i9:
+    <<: *default_target
+    default_tool: icestorm
+    description: colorlight i9 ecp5 FPGA board
+    parameters:
+      - COREV_PULP
+      - FPU
+      - X_EXT
+      - SYNTHESIS=true
+      - VERILATOR=true
+      - REMOVE_OBI_FIFO
+    toplevel: [core_v_mini_mcu]
+    tools:
+      icestorm:
+        arch: ecp5
+        frontends: [sv2v]
+        sv2v_options: [-v]
+
   asic_synthesis:
     <<: *default_target
     default_tool: design_compiler
@@ -512,3 +530,4 @@ targets:
       openroad:
         flow_path: flow/OpenROAD-flow-scripts/flow
         make_target: synth
+
