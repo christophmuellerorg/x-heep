@@ -29,6 +29,5 @@ tar -xzvf oss-cad-suite.tgz -C tools
 
 echo Adding X-Heep requirements into the OSS cad suite python venv
 source tools/oss-cad-suite/environment
-tabbypy3 -m pip install --upgrade pip
-pip3 install -r python-requirements.txt
+tabbypy3 -m pip install -r python-requirements.txt
 $sed -i 's/OSS CAD Suite/XHEEP OSS CAD Suite/g' tools/oss-cad-suite/environment
