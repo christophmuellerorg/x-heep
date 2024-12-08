@@ -31,3 +31,4 @@ echo Adding X-Heep requirements into the OSS cad suite python venv
 source tools/oss-cad-suite/environment
 tabbypy3 -m pip install -r python-requirements.txt
 $sed -i 's/OSS CAD Suite/XHEEP OSS CAD Suite/g' tools/oss-cad-suite/environment
+$sed -i 's/export VERILATOR_ROOT/# export VERILATOR_ROOT/g' tools/oss-cad-suite/environment

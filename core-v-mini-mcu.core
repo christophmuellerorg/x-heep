@@ -370,13 +370,20 @@ targets:
           - '--trace-fst'
           - '--trace-structs'
           - '--trace-params'
+          - '--timing'
+          - '--timescale 1ns/1ps'
           - '--trace-max-array 1024'
           - '--x-assign unique'
           - '--x-initial unique'
           - '--exe tb_top.cpp'
-          - '-CFLAGS "-std=c++11 -Wall -g -fpermissive"'
+          - '-CFLAGS "-std=c++14 -Wall -g -fpermissive"'
           - '-LDFLAGS "-pthread -lutil -lelf"'
           - "-Wall"
+          - '-Wno-MULTIDRIVEN'
+          - '-Wno-COMBDLY'
+          - '-Wno-NOLATCH'
+          - '-Wno-UNOPTFLAT'
+          - '-Wno-GENUNNAMED'
 
   sim_sc:
     <<: *default_target
